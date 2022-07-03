@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
+
+const DELAY = 30 * time.Second
 
 func main() {
 	showOptions()
@@ -12,18 +15,22 @@ func main() {
 
 func startMonitoring() {
 	sites := []string{"https://www.google.com", "https://www.alura.com.br", "https://www.facebook.com", "https://www.twitter.com"}
-	for _, site := range sites {
-		fmt.Println("Starting monitoring: ", site)
-		resp, err := http.Get(site)
-		if err != nil {
-			fmt.Println(site, "Error: ", err)
-		} else {
-			if resp.StatusCode == 200 {
-				fmt.Println(site, "is up")
+	for {
+		for _, site := range sites {
+			fmt.Println("Starting monitoring: ", site)
+			resp, err := http.Get(site)
+			if err != nil {
+				fmt.Println(site, "Error: ", err)
 			} else {
-				fmt.Println(site, "Error Status: ", resp.StatusCode)
+				if resp.StatusCode == 200 {
+					fmt.Println(site, "is up")
+				} else {
+					fmt.Println(site, "Error Status: ", resp.StatusCode)
+				}
 			}
 		}
+		fmt.Println("----------------------------------------------------------------")
+		time.Sleep(DELAY)
 	}
 }
 
