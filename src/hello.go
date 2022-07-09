@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -19,19 +20,20 @@ func main() {
 }
 
 func startMonitoring() {
-	//sites := []string{"https://www.google.com", "https://www.alura.com.br", "https://www.facebook.com", "https://www.twitter.com"}
 	sites := readFile(FILE_PATH)
 	for {
 		for _, site := range sites {
-
 			fmt.Println("Starting monitoring: ", site)
 			resp, err := http.Get(site)
 			if err != nil {
 				fmt.Println(site, "Error: ", err)
 			} else {
+				statusCode := resp.StatusCode
 				if resp.StatusCode == 200 {
+					registerLogger(site, statusCode)
 					fmt.Println(site, "is up")
 				} else {
+					registerLogger(site, statusCode)
 					fmt.Println(site, "Error Status: ", resp.StatusCode)
 				}
 			}
@@ -82,4 +84,13 @@ func readFile(filePath string) []string {
 	}
 	file.Close()
 	return eventList
+}
+
+func registerLogger(site string, status int) {
+	file, err := os.OpenFile("logs.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Println(err)
+	}
+	file.WriteString(site + "-" + strconv.Itoa(status) + "\n")
+	fmt.Println(file)
 }

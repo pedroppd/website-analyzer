@@ -3,3 +3,6 @@ https://www.youtube.com/
 https://golang.org/ 
 https://www.google.com/ 
 https://www.linkedin.com/ 
+https://www.alura.com.br 
+https://www.facebook.com 
+https://www.twitter.com 
