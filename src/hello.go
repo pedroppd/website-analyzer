@@ -91,6 +91,7 @@ func registerLogger(site string, status int) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	file.WriteString(site + "-" + strconv.Itoa(status) + "\n")
+	formatHours := time.Now().Format("2006-01-02 15:04:05")
+	file.WriteString(formatHours + " - " + site + " - " + strconv.Itoa(status) + "\n")
 	fmt.Println(file)
 }

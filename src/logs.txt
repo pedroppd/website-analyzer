@@ -1,7 +1,7 @@
-https://opensea.io/collection/reservaxcollector-403
-https://www.youtube.com/-200
-https://golang.org/-200
-https://www.google.com/-200
-https://www.linkedin.com/-200
-https://www.alura.com.br-200
-https://www.facebook.com-200
+2022-07-09 17:14:01 - https://opensea.io/collection/reservaxcollector - 403
+2022-07-09 17:14:01 - https://www.youtube.com/ - 200
+2022-07-09 17:14:02 - https://golang.org/ - 200
+2022-07-09 17:14:02 - https://www.google.com/ - 200
+2022-07-09 17:14:02 - https://www.linkedin.com/ - 200
+2022-07-09 17:14:03 - https://www.alura.com.br - 200
+2022-07-09 17:14:03 - https://www.facebook.com - 200
